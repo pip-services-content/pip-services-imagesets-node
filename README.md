@@ -27,6 +27,46 @@ This microservice has dependencies on the following microservices:
   - [HTTP Version 1](doc/HttpProtocolV1.md)
   - [Seneca Version 1](doc/SenecaProtocolV1.md)
 
+##  Contract
+
+Logical contract of the microservice is presented below. For physical implementation (HTTP/REST, Thrift, Seneca, Lambda, etc.),
+please, refer to documentation of the specific protocol.
+
+```typescript
+class ImageSetV1 implements IStringIdentifiable {
+    /* Identification */
+    public id: string;
+
+    /* Automatically set fields */
+    public create_time: Date;
+
+    /* Content */
+    public title: string;
+    public pic_ids?: string[];
+
+    /* Search */
+    public tags?: string[];
+    public all_tags?: string[];
+}
+
+interface IImageSetsV1 {
+    getImageSets(correlationId: string, filter: FilterParams, paging: PagingParams,
+        callback: (err: any, page: DataPage<ImageSetV1>) => void): void;
+
+    getImageSetById(correlationId: string, imagesetId: string,
+        callback: (err: any, imageset: ImageSetV1) => void): void;
+
+    createImageSet(correlationId: string, imageset: ImageSetV1,
+        callback: (err: any, imageset: ImageSetV1) => void): void;
+
+    updateImageSet(correlationId: string, imageset: ImageSetV1,
+        callback: (err: any, imageset: ImageSetV1) => void): void;
+
+    deleteImageSetById(correlationId: string, imagesetId: string,
+        callback: (err: any, imageset: ImageSetV1) => void): void;
+}
+```
+
 ## Download
 
 Right now the only way to get the microservice is to check it out directly from github repository
