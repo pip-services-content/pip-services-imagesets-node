@@ -4,7 +4,7 @@ class ImageSetV1 {
     constructor(id, title, picIds) {
         this.id = id;
         this.title = title;
-        this.pic_ids = [];
+        this.pics = [];
         this.create_time = new Date();
     }
 }

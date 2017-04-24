@@ -1,8 +1,8 @@
 import { CommandSet } from 'pip-services-commons-node';
-import { IImageSetsBusinessLogic } from './IImageSetsBusinessLogic';
+import { IImageSetsController } from './IImageSetsController';
 export declare class ImageSetsCommandSet extends CommandSet {
     private _logic;
-    constructor(logic: IImageSetsBusinessLogic);
+    constructor(logic: IImageSetsController);
     private makeGetImageSetsCommand();
     private makeGetImageSetByIdCommand();
     private makeCreateImageSetCommand();

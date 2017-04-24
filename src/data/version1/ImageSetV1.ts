@@ -1,12 +1,14 @@
 import { IStringIdentifiable } from 'pip-services-commons-node';
 import { MultiString } from 'pip-services-commons-node';
 
+import { AttachmentV1 } from './AttachmentV1';
+
 export class ImageSetV1 implements IStringIdentifiable {
 
     public constructor(id: string, title: string, picIds?: string[]) {
         this.id = id;
         this.title = title;
-        this.pic_ids = [];
+        this.pics = [];
         this.create_time = new Date();
     }
 
@@ -18,7 +20,7 @@ export class ImageSetV1 implements IStringIdentifiable {
 
     /* Content */
     public title: string;
-    public pic_ids?: string[];
+    public pics?: AttachmentV1[];
 
     /* Search */
     public tags?: string[];

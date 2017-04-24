@@ -8,7 +8,7 @@ import { ImageSetsController } from '../logic/ImageSetsController';
 import { ImageSetsHttpServiceV1 } from '../services/version1/ImageSetsHttpServiceV1';
 import { ImageSetsSenecaServiceV1 } from '../services/version1/ImageSetsSenecaServiceV1'; 
 
-export class ImageSetsFactory extends Factory {
+export class ImageSetsServiceFactory extends Factory {
 	public static Descriptor = new Descriptor("pip-services-imagesets", "factory", "default", "default", "1.0");
 	public static MemoryPersistenceDescriptor = new Descriptor("pip-services-imagesets", "persistence", "memory", "*", "1.0");
 	public static FilePersistenceDescriptor = new Descriptor("pip-services-imagesets", "persistence", "file", "*", "1.0");
@@ -19,12 +19,12 @@ export class ImageSetsFactory extends Factory {
 	
 	constructor() {
 		super();
-		this.registerAsType(ImageSetsFactory.MemoryPersistenceDescriptor, ImageSetsMemoryPersistence);
-		this.registerAsType(ImageSetsFactory.FilePersistenceDescriptor, ImageSetsFilePersistence);
-		this.registerAsType(ImageSetsFactory.MongoDbPersistenceDescriptor, ImageSetsMongoDbPersistence);
-		this.registerAsType(ImageSetsFactory.ControllerDescriptor, ImageSetsController);
-		this.registerAsType(ImageSetsFactory.SenecaServiceDescriptor, ImageSetsSenecaServiceV1);
-		this.registerAsType(ImageSetsFactory.HttpServiceDescriptor, ImageSetsHttpServiceV1);
+		this.registerAsType(ImageSetsServiceFactory.MemoryPersistenceDescriptor, ImageSetsMemoryPersistence);
+		this.registerAsType(ImageSetsServiceFactory.FilePersistenceDescriptor, ImageSetsFilePersistence);
+		this.registerAsType(ImageSetsServiceFactory.MongoDbPersistenceDescriptor, ImageSetsMongoDbPersistence);
+		this.registerAsType(ImageSetsServiceFactory.ControllerDescriptor, ImageSetsController);
+		this.registerAsType(ImageSetsServiceFactory.SenecaServiceDescriptor, ImageSetsSenecaServiceV1);
+		this.registerAsType(ImageSetsServiceFactory.HttpServiceDescriptor, ImageSetsHttpServiceV1);
 	}
 	
 }

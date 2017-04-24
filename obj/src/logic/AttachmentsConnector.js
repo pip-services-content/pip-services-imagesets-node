@@ -6,13 +6,22 @@ class AttachmentsConnector {
     constructor(_attachmentsClient) {
         this._attachmentsClient = _attachmentsClient;
     }
+    extractAttachmentIds(imageset) {
+        let ids = [];
+        _.each(imageset.pics, (pic) => {
+            if (pic.id)
+                ids.push(pic.id);
+        });
+        return ids;
+    }
     addAttachments(correlationId, imageset, callback) {
         if (this._attachmentsClient == null || imageset == null) {
             callback(null);
             return;
         }
+        let ids = this.extractAttachmentIds(imageset);
         let reference = new pip_clients_attachments_node_1.ReferenceV1(imageset.id, 'imageset');
-        this._attachmentsClient.addAttachments(correlationId, reference, imageset.pic_ids, (err) => {
+        this._attachmentsClient.addAttachments(correlationId, reference, ids, (err) => {
             callback(err);
         });
     }
@@ -21,8 +30,10 @@ class AttachmentsConnector {
             callback(null);
             return;
         }
+        let oldIds = this.extractAttachmentIds(oldImageSet);
+        let newIds = this.extractAttachmentIds(newImageSet);
         let reference = new pip_clients_attachments_node_1.ReferenceV1(newImageSet.id, 'imageset');
-        this._attachmentsClient.updateAttachments(correlationId, reference, oldImageSet.pic_ids, newImageSet.pic_ids, (err) => {
+        this._attachmentsClient.updateAttachments(correlationId, reference, oldIds, newIds, (err) => {
             callback(err);
         });
     }
@@ -31,8 +42,9 @@ class AttachmentsConnector {
             callback(null);
             return;
         }
+        let ids = this.extractAttachmentIds(imageset);
         let reference = new pip_clients_attachments_node_1.ReferenceV1(imageset.id, 'imageset');
-        this._attachmentsClient.removeAttachments(correlationId, reference, imageset.pic_ids, (err) => {
+        this._attachmentsClient.removeAttachments(correlationId, reference, ids, (err) => {
             callback(err);
         });
     }

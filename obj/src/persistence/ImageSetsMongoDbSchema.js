@@ -4,6 +4,19 @@ const mongoose_1 = require("mongoose");
 let Mixed = mongoose_1.Schema.Types.Mixed;
 exports.ImageSetsMongoDbSchema = function (collection) {
     collection = collection || 'imagesets';
+    let attachmentSchema = new mongoose_1.Schema({
+        id: { type: String, required: false },
+        url: { type: String, required: false },
+        name: { type: String, required: false }
+    });
+    attachmentSchema.set('toJSON', {
+        transform: function (doc, ret) {
+            //ret.id = ret._id;
+            delete ret._id;
+            delete ret.__v;
+            return ret;
+        }
+    });
     let schema = new mongoose_1.Schema({
         /* Identification */
         _id: { type: String, unique: true },
@@ -11,7 +24,7 @@ exports.ImageSetsMongoDbSchema = function (collection) {
         create_time: { type: Date, required: true, 'default': Date.now },
         /* Content */
         title: { type: String, required: false },
-        pic_ids: { type: [String], required: false },
+        pics: { type: [attachmentSchema], required: false },
         /* Search  */
         tags: { type: [String], required: false },
         all_tags: { type: [String], required: false, index: true }

@@ -8,8 +8,8 @@ import { DataPage } from 'pip-services-commons-node';
 import { ICommandable } from 'pip-services-commons-node';
 import { CommandSet } from 'pip-services-commons-node';
 import { ImageSetV1 } from '../data/version1/ImageSetV1';
-import { IImageSetsBusinessLogic } from './IImageSetsBusinessLogic';
-export declare class ImageSetsController implements IConfigurable, IReferenceable, ICommandable, IImageSetsBusinessLogic {
+import { IImageSetsController } from './IImageSetsController';
+export declare class ImageSetsController implements IConfigurable, IReferenceable, ICommandable, IImageSetsController {
     private static _defaultConfig;
     private _dependencyResolver;
     private _persistence;

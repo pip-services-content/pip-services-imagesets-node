@@ -2,6 +2,8 @@ import { ObjectSchema } from 'pip-services-commons-node';
 import { ArraySchema } from 'pip-services-commons-node';
 import { TypeCode } from 'pip-services-commons-node';
 
+import { AttachmentV1Schema } from './AttachmentV1Schema';
+
 export class ImageSetV1Schema extends ObjectSchema {
     public constructor() {
         super();
@@ -15,7 +17,7 @@ export class ImageSetV1Schema extends ObjectSchema {
 
         /* Common properties */
         this.withOptionalProperty('title', TypeCode.String);
-        this.withOptionalProperty('pic_ids', new ArraySchema(TypeCode.String));
+        this.withOptionalProperty('pics', new ArraySchema(new AttachmentV1Schema()));
 
         /* Search */
         this.withOptionalProperty('tags', new ArraySchema(TypeCode.String));

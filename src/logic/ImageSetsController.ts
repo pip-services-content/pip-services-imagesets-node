@@ -18,11 +18,11 @@ import { IAttachmentsClientV1 } from 'pip-clients-attachments-node';
 
 import { ImageSetV1 } from '../data/version1/ImageSetV1';
 import { IImageSetsPersistence } from '../persistence/IImageSetsPersistence';
-import { IImageSetsBusinessLogic } from './IImageSetsBusinessLogic';
+import { IImageSetsController } from './IImageSetsController';
 import { ImageSetsCommandSet } from './ImageSetsCommandSet';
 import { AttachmentsConnector } from './AttachmentsConnector';
 
-export class ImageSetsController implements IConfigurable, IReferenceable, ICommandable, IImageSetsBusinessLogic {
+export class ImageSetsController implements IConfigurable, IReferenceable, ICommandable, IImageSetsController {
     private static _defaultConfig: ConfigParams = ConfigParams.fromTuples(
         'dependencies.persistence', 'pip-services-imagesets:persistence:*:*:1.0',
         'dependencies.attachments', 'pip-services-attachments:client:*:*:1.0'

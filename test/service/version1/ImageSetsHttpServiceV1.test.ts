@@ -22,14 +22,14 @@ let httpConfig = ConfigParams.fromTuples(
 let IMAGESET1 = <ImageSetV1>{
     id: '1',
     title: 'ImageSet 1',
-    pic_ids: ['111','222','333']
+    pics: [{ id: '111' },{ id: '222' },{ id: '333' }]
 };
 let IMAGESET2 = <ImageSetV1>{
     id: '2',
     tags: ['TAG 1'],
     all_tags: ['tag1'],
     title: 'ImageSet 2',
-    pic_ids: ['444','555','666']
+    pics: [{ id: '444' }, { id: '555' }, { id: '666' }]
 };
 
 suite('ImageSetsHttpServiceV1', ()=> {
@@ -79,7 +79,7 @@ suite('ImageSetsHttpServiceV1', ()=> {
                         
                         assert.isObject(imageset);
                         assert.equal(imageset.title, IMAGESET1.title);
-                        assert.sameMembers(imageset.pic_ids, IMAGESET1.pic_ids);
+                        assert.sameDeepMembers(imageset.pics, IMAGESET1.pics);
 
                         imageset1 = imageset;
 
@@ -98,7 +98,7 @@ suite('ImageSetsHttpServiceV1', ()=> {
                         
                         assert.isObject(imageset);
                         assert.equal(imageset.title, IMAGESET2.title);
-                        assert.sameMembers(imageset.pic_ids, IMAGESET2.pic_ids);
+                        assert.sameDeepMembers(imageset.pics, IMAGESET2.pics);
 
                         imageset2 = imageset;
 
@@ -133,7 +133,7 @@ suite('ImageSetsHttpServiceV1', ()=> {
                         
                         assert.isObject(imageset);
                         assert.equal(imageset.title, 'New Title 1');
-                        assert.sameMembers(imageset.pic_ids, imageset1.pic_ids);
+                        assert.sameDeepMembers(imageset.pics, imageset1.pics);
 
                         imageset1 = imageset;
 

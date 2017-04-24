@@ -1,1 +1,1 @@
-export { ImageSetsFactory } from './ImageSetsFactory';
+export { ImageSetsServiceFactory } from './ImageSetsServiceFactory';

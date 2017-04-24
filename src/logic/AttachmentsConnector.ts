@@ -1,7 +1,6 @@
 let _ = require('lodash');
 
 import { ReferenceV1 } from 'pip-clients-attachments-node';
-import { AttachmentV1 } from 'pip-clients-attachments-node';
 import { IAttachmentsClientV1 } from 'pip-clients-attachments-node';
 
 import { ImageSetV1 } from '../data/version1/ImageSetV1';
@@ -12,6 +11,17 @@ export class AttachmentsConnector {
         private _attachmentsClient: IAttachmentsClientV1
     ) {}
 
+    private extractAttachmentIds(imageset: ImageSetV1): string[] {
+        let ids: string[] = [];
+
+        _.each(imageset.pics, (pic) => {
+            if (pic.id)
+                ids.push(pic.id);
+        });
+
+        return ids;
+    }
+
     public addAttachments(correlationId: string, imageset: ImageSetV1,
         callback: (err: any) => void) : void {
         
@@ -20,8 +30,9 @@ export class AttachmentsConnector {
             return;
         }
 
+        let ids = this.extractAttachmentIds(imageset);
         let reference = new ReferenceV1(imageset.id, 'imageset');
-        this._attachmentsClient.addAttachments(correlationId, reference, imageset.pic_ids, (err) => {
+        this._attachmentsClient.addAttachments(correlationId, reference, ids, (err) => {
             callback(err);
         })
     }
@@ -34,8 +45,10 @@ export class AttachmentsConnector {
             return;
         }
 
+        let oldIds = this.extractAttachmentIds(oldImageSet);
+        let newIds = this.extractAttachmentIds(newImageSet);
         let reference = new ReferenceV1(newImageSet.id, 'imageset');
-        this._attachmentsClient.updateAttachments(correlationId, reference, oldImageSet.pic_ids, newImageSet.pic_ids, (err) => {
+        this._attachmentsClient.updateAttachments(correlationId, reference, oldIds, newIds, (err) => {
             callback(err);
         })
     }
@@ -48,8 +61,9 @@ export class AttachmentsConnector {
             return;
         }
 
+        let ids = this.extractAttachmentIds(imageset);
         let reference = new ReferenceV1(imageset.id, 'imageset');
-        this._attachmentsClient.removeAttachments(correlationId, reference, imageset.pic_ids, (err) => {
+        this._attachmentsClient.removeAttachments(correlationId, reference, ids, (err) => {
             callback(err);
         })
     }

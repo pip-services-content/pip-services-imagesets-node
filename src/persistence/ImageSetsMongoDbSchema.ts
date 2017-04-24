@@ -4,6 +4,21 @@ let Mixed = Schema.Types.Mixed;
 export let ImageSetsMongoDbSchema = function(collection?: string) {
     collection = collection || 'imagesets';
 
+    let attachmentSchema = new Schema({
+        id: { type: String, required: false },
+        url: { type: String, required: false },
+        name: { type: String, required: false }
+    });
+
+    attachmentSchema.set('toJSON', {
+        transform: function (doc, ret) {
+            //ret.id = ret._id;
+            delete ret._id;
+            delete ret.__v;
+            return ret;
+        }
+    });
+
     let schema = new Schema(
         {
             /* Identification */
@@ -14,7 +29,7 @@ export let ImageSetsMongoDbSchema = function(collection?: string) {
 
             /* Content */
             title: { type: String, required: false },
-            pic_ids: { type: [String], required: false },
+            pics: { type: [attachmentSchema], required: false },
 
             /* Search  */
             tags: { type: [String], required: false },

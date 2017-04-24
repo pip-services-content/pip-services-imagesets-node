@@ -1,5 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var ImageSetsFactory_1 = require("./ImageSetsFactory");
-exports.ImageSetsFactory = ImageSetsFactory_1.ImageSetsFactory;
+var ImageSetsServiceFactory_1 = require("./ImageSetsServiceFactory");
+exports.ImageSetsServiceFactory = ImageSetsServiceFactory_1.ImageSetsServiceFactory;
 //# sourceMappingURL=index.js.map

@@ -12,12 +12,12 @@ import { PagingParamsSchema } from 'pip-services-commons-node';
 
 import { ImageSetV1 } from '../data/version1/ImageSetV1';
 import { ImageSetV1Schema } from '../data/version1/ImageSetV1Schema';
-import { IImageSetsBusinessLogic } from './IImageSetsBusinessLogic';
+import { IImageSetsController } from './IImageSetsController';
 
 export class ImageSetsCommandSet extends CommandSet {
-    private _logic: IImageSetsBusinessLogic;
+    private _logic: IImageSetsController;
 
-	constructor(logic: IImageSetsBusinessLogic) {
+	constructor(logic: IImageSetsController) {
 		super();
 
 		this._logic = logic;
