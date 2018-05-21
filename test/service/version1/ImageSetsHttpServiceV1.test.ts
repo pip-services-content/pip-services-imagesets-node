@@ -70,7 +70,7 @@ suite('ImageSetsHttpServiceV1', ()=> {
         async.series([
         // Create one imageset
             (callback) => {
-                rest.post('/imagesets/create_imageset',
+                rest.post('/v1/imagesets/create_imageset',
                     {
                         imageset: IMAGESET1
                     },
@@ -89,7 +89,7 @@ suite('ImageSetsHttpServiceV1', ()=> {
             },
         // Create another imageset
             (callback) => {
-                rest.post('/imagesets/create_imageset',
+                rest.post('/v1/imagesets/create_imageset',
                     {
                         imageset: IMAGESET2
                     },
@@ -108,7 +108,7 @@ suite('ImageSetsHttpServiceV1', ()=> {
             },
         // Get all imagesets
             (callback) => {
-                rest.post('/imagesets/get_imagesets',
+                rest.post('/v1/imagesets/get_imagesets',
                     {},
                     (err, req, res, page) => {
                         assert.isNull(err);
@@ -124,7 +124,7 @@ suite('ImageSetsHttpServiceV1', ()=> {
             (callback) => {
                 imageset1.title = 'New Title 1';
 
-                rest.post('/imagesets/update_imageset',
+                rest.post('/v1/imagesets/update_imageset',
                     {
                         imageset: imageset1
                     },
@@ -143,7 +143,7 @@ suite('ImageSetsHttpServiceV1', ()=> {
             },
         // Delete imageset
             (callback) => {
-                rest.post('/imagesets/delete_imageset_by_id',
+                rest.post('/v1/imagesets/delete_imageset_by_id',
                     {
                         imageset_id: imageset1.id
                     },
@@ -156,7 +156,7 @@ suite('ImageSetsHttpServiceV1', ()=> {
             },
         // Try to get delete imageset
             (callback) => {
-                rest.post('/imagesets/get_imageset_by_id',
+                rest.post('/v1/imagesets/get_imageset_by_id',
                     {
                         imageset_id: imageset1.id
                     },
