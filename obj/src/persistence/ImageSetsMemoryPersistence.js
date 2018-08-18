@@ -45,7 +45,7 @@ class ImageSetsMemoryPersistence extends pip_services_data_node_1.IdentifiableMe
         let search = filter.getAsNullableString('search');
         let id = filter.getAsNullableString('id');
         let tagsString = filter.get('tags');
-        let tags = tagsString != null ? pip_services_commons_node_2.TagsProcessor.compressTags(tagsString) : null;
+        let tags = tagsString != null ? pip_services_commons_node_2.TagsProcessor.compressTags([tagsString]) : null;
         return (item) => {
             if (id != null && id != item.id)
                 return false;

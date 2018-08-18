@@ -34,7 +34,7 @@ class ImageSetsController {
     createImageSet(correlationId, imageset, callback) {
         let newImageSet = null;
         imageset.create_time = new Date();
-        imageset.all_tags = pip_services_commons_node_3.TagsProcessor.extractHashTags(imageset, 'title');
+        imageset.all_tags = pip_services_commons_node_3.TagsProcessor.extractHashTags('title');
         async.series([
             (callback) => {
                 this._persistence.create(correlationId, imageset, (err, data) => {
@@ -52,7 +52,7 @@ class ImageSetsController {
     updateImageSet(correlationId, imageset, callback) {
         let oldImageSet = null;
         let newImageSet = null;
-        imageset.all_tags = pip_services_commons_node_3.TagsProcessor.extractHashTags(imageset, 'title');
+        imageset.all_tags = pip_services_commons_node_3.TagsProcessor.extractHashTags('title');
         async.series([
             (callback) => {
                 this._persistence.getOneById(correlationId, imageset.id, (err, data) => {

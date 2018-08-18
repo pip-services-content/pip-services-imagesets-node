@@ -62,7 +62,7 @@ export class ImageSetsMemoryPersistence
         let search = filter.getAsNullableString('search');
         let id = filter.getAsNullableString('id');
         let tagsString = filter.get('tags');
-        let tags = tagsString != null ? TagsProcessor.compressTags(tagsString) : null;
+        let tags = tagsString != null ? TagsProcessor.compressTags([tagsString]) : null;
 
         return (item: ImageSetV1) => {
             if (id != null && id != item.id)

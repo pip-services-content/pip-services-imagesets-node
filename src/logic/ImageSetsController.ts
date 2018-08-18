@@ -67,9 +67,7 @@ export class ImageSetsController implements IConfigurable, IReferenceable, IComm
         let newImageSet: ImageSetV1 = null;
 
         imageset.create_time = new Date();
-        imageset.all_tags = TagsProcessor.extractHashTags(
-            imageset, 'title'
-        );
+        imageset.all_tags = TagsProcessor.extractHashTags('title');
 
         async.series([
             (callback) => {
@@ -91,9 +89,7 @@ export class ImageSetsController implements IConfigurable, IReferenceable, IComm
         let oldImageSet: ImageSetV1 = null;
         let newImageSet: ImageSetV1 = null;
         
-        imageset.all_tags = TagsProcessor.extractHashTags(
-            imageset, 'title'
-        );
+        imageset.all_tags = TagsProcessor.extractHashTags('title');
 
         async.series([
             (callback) => {

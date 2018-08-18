@@ -1,7 +1,7 @@
 /node_modules
 /npm-debug.log
 /.idea
-/data/imagesets.test.json
-/data/imagesets.json
+/data/ImageSets.test.json
+/data/ImageSets.json
 /obj/test
 /docker/id_rsa*
