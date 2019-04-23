@@ -1,4 +1,4 @@
-import { ConfigParams } from 'pip-services-commons-node';
+import { ConfigParams } from 'pip-services3-commons-node';
 
 import { ImageSetsFilePersistence } from '../../src/persistence/ImageSetsFilePersistence';
 import { ImageSetsPersistenceFixture } from './ImageSetsPersistenceFixture';

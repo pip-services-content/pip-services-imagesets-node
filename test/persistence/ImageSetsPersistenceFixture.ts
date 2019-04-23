@@ -1,9 +1,9 @@
 let async = require('async');
 let assert = require('chai').assert;
 
-import { FilterParams } from 'pip-services-commons-node';
-import { PagingParams } from 'pip-services-commons-node';
-import { MultiString } from 'pip-services-commons-node';
+import { FilterParams } from 'pip-services3-commons-node';
+import { PagingParams } from 'pip-services3-commons-node';
+import { MultiString } from 'pip-services3-commons-node';
 
 import { IImageSetsPersistence } from '../../src/persistence/IImageSetsPersistence';
 import { ImageSetV1 } from '../../src/data/version1/ImageSetV1';

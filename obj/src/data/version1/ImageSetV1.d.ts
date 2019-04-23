@@ -1,4 +1,4 @@
-import { IStringIdentifiable } from 'pip-services-commons-node';
+import { IStringIdentifiable } from 'pip-services3-commons-node';
 import { AttachmentV1 } from './AttachmentV1';
 export declare class ImageSetV1 implements IStringIdentifiable {
     constructor(id: string, title: string, picIds?: string[]);

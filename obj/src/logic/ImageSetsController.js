@@ -1,15 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 let async = require('async');
-const pip_services_commons_node_1 = require("pip-services-commons-node");
-const pip_services_commons_node_2 = require("pip-services-commons-node");
-const pip_services_commons_node_3 = require("pip-services-commons-node");
-const pip_services_commons_node_4 = require("pip-services-commons-node");
+const pip_services3_commons_node_1 = require("pip-services3-commons-node");
+const pip_services3_commons_node_2 = require("pip-services3-commons-node");
+const pip_services3_commons_node_3 = require("pip-services3-commons-node");
+const pip_services3_commons_node_4 = require("pip-services3-commons-node");
 const ImageSetsCommandSet_1 = require("./ImageSetsCommandSet");
 const AttachmentsConnector_1 = require("./AttachmentsConnector");
 class ImageSetsController {
     constructor() {
-        this._dependencyResolver = new pip_services_commons_node_2.DependencyResolver(ImageSetsController._defaultConfig);
+        this._dependencyResolver = new pip_services3_commons_node_2.DependencyResolver(ImageSetsController._defaultConfig);
     }
     configure(config) {
         this._dependencyResolver.configure(config);
@@ -34,7 +34,7 @@ class ImageSetsController {
     createImageSet(correlationId, imageset, callback) {
         let newImageSet = null;
         imageset.create_time = new Date();
-        imageset.all_tags = pip_services_commons_node_3.TagsProcessor.extractHashTags('#title');
+        imageset.all_tags = pip_services3_commons_node_3.TagsProcessor.extractHashTags('#title');
         async.series([
             (callback) => {
                 this._persistence.create(correlationId, imageset, (err, data) => {
@@ -52,13 +52,13 @@ class ImageSetsController {
     updateImageSet(correlationId, imageset, callback) {
         let oldImageSet = null;
         let newImageSet = null;
-        imageset.all_tags = pip_services_commons_node_3.TagsProcessor.extractHashTags('#title');
+        imageset.all_tags = pip_services3_commons_node_3.TagsProcessor.extractHashTags('#title');
         async.series([
             (callback) => {
                 this._persistence.getOneById(correlationId, imageset.id, (err, data) => {
                     oldImageSet = data;
                     if (err == null && data == null) {
-                        err = new pip_services_commons_node_4.NotFoundException(correlationId, 'IMAGESET_NOT_FOUND', 'ImageSet ' + imageset.id + ' was not found').withDetails('imageset_id', imageset.id);
+                        err = new pip_services3_commons_node_4.NotFoundException(correlationId, 'IMAGESET_NOT_FOUND', 'ImageSet ' + imageset.id + ' was not found').withDetails('imageset_id', imageset.id);
                     }
                     callback(err);
                 });
@@ -93,6 +93,6 @@ class ImageSetsController {
         });
     }
 }
-ImageSetsController._defaultConfig = pip_services_commons_node_1.ConfigParams.fromTuples('dependencies.persistence', 'pip-services-imagesets:persistence:*:*:1.0', 'dependencies.attachments', 'pip-services-attachments:client:*:*:1.0');
+ImageSetsController._defaultConfig = pip_services3_commons_node_1.ConfigParams.fromTuples('dependencies.persistence', 'pip-services-imagesets:persistence:*:*:1.0', 'dependencies.attachments', 'pip-services-attachments:client:*:*:1.0');
 exports.ImageSetsController = ImageSetsController;
 //# sourceMappingURL=ImageSetsController.js.map
