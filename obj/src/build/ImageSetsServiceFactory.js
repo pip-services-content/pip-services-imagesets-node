@@ -17,11 +17,11 @@ class ImageSetsServiceFactory extends pip_services3_components_node_1.Factory {
         this.registerAsType(ImageSetsServiceFactory.HttpServiceDescriptor, ImageSetsHttpServiceV1_1.ImageSetsHttpServiceV1);
     }
 }
+exports.ImageSetsServiceFactory = ImageSetsServiceFactory;
 ImageSetsServiceFactory.Descriptor = new pip_services3_commons_node_1.Descriptor("pip-services-imagesets", "factory", "default", "default", "1.0");
 ImageSetsServiceFactory.MemoryPersistenceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-imagesets", "persistence", "memory", "*", "1.0");
 ImageSetsServiceFactory.FilePersistenceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-imagesets", "persistence", "file", "*", "1.0");
 ImageSetsServiceFactory.MongoDbPersistenceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-imagesets", "persistence", "mongodb", "*", "1.0");
 ImageSetsServiceFactory.ControllerDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-imagesets", "controller", "default", "*", "1.0");
 ImageSetsServiceFactory.HttpServiceDescriptor = new pip_services3_commons_node_1.Descriptor("pip-services-imagesets", "service", "http", "*", "1.0");
-exports.ImageSetsServiceFactory = ImageSetsServiceFactory;
 //# sourceMappingURL=ImageSetsServiceFactory.js.map

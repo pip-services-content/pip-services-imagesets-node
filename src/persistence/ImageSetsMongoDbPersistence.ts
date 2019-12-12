@@ -5,18 +5,17 @@ import { PagingParams } from 'pip-services3-commons-node';
 import { DataPage } from 'pip-services3-commons-node';
 import { AnyValueMap } from 'pip-services3-commons-node';
 import { TagsProcessor } from 'pip-services3-commons-node';
-import { IdentifiableMongoosePersistence } from 'pip-services3-mongoose-node';
+import { IdentifiableMongoDbPersistence } from 'pip-services3-mongodb-node';
 
 import { ImageSetV1 } from '../data/version1/ImageSetV1';
 import { IImageSetsPersistence } from './IImageSetsPersistence';
-import { ImageSetsMongooseSchema } from './ImageSetsMongooseSchema';
 
 export class ImageSetsMongoDbPersistence 
-    extends IdentifiableMongoosePersistence<ImageSetV1, string> 
+    extends IdentifiableMongoDbPersistence<ImageSetV1, string> 
     implements IImageSetsPersistence {
 
     constructor() {
-        super('imagesets', ImageSetsMongooseSchema());
+        super('imagesets');
     }
 
     private composeFilter(filter: FilterParams): any {
